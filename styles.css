@@ -30,22 +30,58 @@ body {
 }
 
 /* =====================
+   SCROLL HINT
+   ===================== */
+.scroll-hint {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--fg);
+  z-index: 1000;
+  opacity: 0.7;
+  transform-origin: left center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.scroll-hint:hover {
+  opacity: 1;
+}
+
+.scroll-hint.pulsing {
+  animation: hint-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.06);
+  }
+}
+
+/* =====================
    SCROLL INDICATOR
    ===================== */
 .scroll-indicator {
   position: fixed;
   top: 0;
   left: 0;
-  width: 3px;
+  width: 5px;
   height: 100vh;
-  background: var(--muted);
+  background: #e0e0e0;
   z-index: 1000;
 }
 
 .scroll-progress {
   width: 100%;
   height: 0%;
-  background: var(--accent);
+  background: #333;
   transition: height 0.1s ease-out;
 }
 
@@ -748,6 +784,12 @@ body {
   transition: top 6s ease-out, left 6s ease-out, transform 6s ease-out, opacity 1.5s ease;
 }
 
+.floating-letter.fade-out {
+  opacity: 0 !important;
+  transform: translateY(-30px) scale(0.8);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
 /* Gradual drift animations - each letter floats from center to a different position */
 @keyframes drift-1 {
   0% { top: 50%; left: 50%; transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
@@ -833,5 +875,293 @@ body {
   }
   75% {
     transform: translate(5px, 6px);
+  }
+}
+
+/* =====================
+   END SECTION
+   ===================== */
+.section-end {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.end-content {
+  text-align: center;
+}
+
+.end-text {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+
+/* =====================
+   HEAVEN - SCROLL POEM
+   ===================== */
+.section-heaven {
+  position: relative;
+  min-height: 1270vh; /* Extra height for scroll effect */
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    #f0f4f3 10%,
+    #e8efed 50%,
+    #f0f4f3 90%,
+    var(--bg) 100%
+  );
+  padding: 0;
+  display: block;
+}
+
+/* Sticky container for the content */
+.heaven-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+}
+
+.heaven-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.heaven-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heaven-poem-container {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.heaven-line-wrapper {
+  position: relative;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heaven-line {
+  font-family: var(--font-poem);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 2;
+  color: var(--fg);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Lines 0-3 stack vertically */
+.heaven-line[data-line="0"],
+.heaven-line[data-line="1"],
+.heaven-line[data-line="2"],
+.heaven-line[data-line="3"] {
+  position: relative;
+}
+
+/* Lines 14-17 stack vertically */
+.heaven-line[data-line="14"],
+.heaven-line[data-line="15"],
+.heaven-line[data-line="16"],
+.heaven-line[data-line="17"] {
+  position: relative;
+}
+
+/* Lines 18-20 stack vertically */
+.heaven-line[data-line="18"],
+.heaven-line[data-line="19"],
+.heaven-line[data-line="20"] {
+  position: relative;
+}
+
+/* Lines 11-12 stack vertically */
+.heaven-line[data-line="11"],
+.heaven-line[data-line="12"] {
+  position: relative;
+}
+
+/* Other lines are absolutely positioned (one at a time) */
+.heaven-line[data-line="4"],
+.heaven-line[data-line="5"],
+.heaven-line[data-line="6"],
+.heaven-line[data-line="7"],
+.heaven-line[data-line="8"],
+.heaven-line[data-line="9"],
+.heaven-line[data-line="10"],
+.heaven-line[data-line="13"],
+.heaven-line[data-line="21"],
+.heaven-line[data-line="22"],
+.heaven-line[data-line="23"] {
+  position: absolute;
+}
+
+.heaven-line.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heaven-line.fading-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Line variations */
+.heaven-line-pause {
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.heaven-line-aside {
+  color: #555;
+}
+
+.heaven-parenthetical {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.heaven-line-fragment {
+  font-style: italic;
+  letter-spacing: 0.2em;
+  font-size: 2em;
+  color: #626A59;
+}
+
+.heaven-line-dialogue {
+  font-style: italic;
+}
+
+.heaven-line-emphasis {
+  letter-spacing: 0.08em;
+}
+
+.heaven-line-soft {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.heaven-line-coda {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #716f6f;
+}
+
+.heaven-line-empty {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Forest SVG container */
+.heaven-forest {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.forest-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  opacity: 0.6;
+  transition: opacity 0.15s ease-out;
+}
+
+
+/* SVG line styles */
+.tree-line,
+.ground-line,
+.mountain-line,
+.bird-line {
+  fill: none;
+  stroke: #2a3a30;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.ground-line {
+  stroke-width: 2;
+  stroke: #3a4a40;
+}
+
+.mountain-line {
+  stroke-width: 1;
+  stroke: #5a6a60;
+  opacity: 0.5;
+}
+
+.mountain-far {
+  opacity: 0.3;
+  stroke: #7a8a80;
+}
+
+.bird-line {
+  stroke-width: 1.2;
+  stroke: #4a5a50;
+}
+
+/* Tree groups with different draw timings */
+.tree-group-1 .tree-line { --draw-delay: 0; }
+.tree-group-2 .tree-line { --draw-delay: 0.1; }
+.tree-group-3 .tree-line { --draw-delay: 0.2; }
+.tree-group-4 .tree-line { --draw-delay: 0.3; }
+.tree-group-5 .tree-line { --draw-delay: 0.4; }
+
+/* Extra scroll space */
+.heaven-scroll-spacer {
+  height: 50vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-heaven {
+    min-height: 1100vh;
+  }
+  
+  .heaven-poem-container {
+    padding: 0 1.5rem;
+  }
+  
+  .forest-svg {
+    height: 60%;
+    opacity: 0.4;
   }
 }

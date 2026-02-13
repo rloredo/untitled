@@ -10,17 +10,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="scroll-hint">just keep scrolling...</div>
+  
   <div class="scroll-container">
     
     <!-- Section 1: Opening -->
-    <section class="section section-intro" data-scroll-effect="fade">
+    <section class="section section-intro" id="intro" data-scroll-effect="fade">
       <div class="content">
         <h1 class="title glitch" data-text="UNTITLED">UNTITLED</h1>
       </div>
     </section>
 
     <!-- Section 2: destiempo -->
-    <section class="section section-destiempo">
+    <section class="section section-destiempo" id="destiempo">
       <!-- Dust particles -->
       <div class="dust-container">
         <div class="dust"></div>
@@ -104,6 +106,111 @@
             <p>mine</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Section 3: heaven -->
+    <section class="section section-heaven" id="heaven">
+      <!-- Scandinavian forest SVG drawings -->
+      <div class="heaven-forest">
+        <svg class="forest-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice">
+          <!-- Pine trees - left group -->
+          <g class="tree-group tree-group-1">
+            <path class="tree-line" d="M80,800 L80,650 M60,720 L80,680 L100,720 M50,680 L80,640 L110,680 M55,640 L80,600 L105,640"/>
+            <path class="tree-line" d="M140,800 L140,580 M110,750 L140,690 L170,750 M105,690 L140,620 L175,690 M115,630 L140,570 L165,630 M125,580 L140,540 L155,580"/>
+            <path class="tree-line" d="M50,800 L50,700 M35,760 L50,730 L65,760 M30,720 L50,680 L70,720"/>
+          </g>
+          
+          <!-- Pine trees - center-left -->
+          <g class="tree-group tree-group-2">
+            <path class="tree-line" d="M280,800 L280,500 M240,760 L280,680 L320,760 M235,680 L280,580 L325,680 M250,580 L280,500 L310,580 M260,520 L280,460 L300,520"/>
+            <path class="tree-line" d="M350,800 L350,620 M320,760 L350,700 L380,760 M315,700 L350,620 L385,700 M325,640 L350,580 L375,640"/>
+          </g>
+          
+          <!-- Pine trees - center -->
+          <g class="tree-group tree-group-3">
+            <path class="tree-line" d="M500,800 L500,450 M450,780 L500,680 L550,780 M445,680 L500,560 L555,680 M460,560 L500,460 L540,560 M475,480 L500,420 L525,480"/>
+            <path class="tree-line" d="M600,800 L600,550 M560,770 L600,690 L640,770 M555,690 L600,590 L645,690 M570,610 L600,540 L630,610"/>
+            <path class="tree-line" d="M680,800 L680,600 M650,760 L680,700 L710,760 M645,700 L680,620 L715,700 M655,640 L680,580 L705,640"/>
+          </g>
+          
+          <!-- Pine trees - center-right -->
+          <g class="tree-group tree-group-4">
+            <path class="tree-line" d="M820,800 L820,520 M780,770 L820,690 L860,770 M775,690 L820,580 L865,690 M790,590 L820,510 L850,590 M800,530 L820,470 L840,530"/>
+            <path class="tree-line" d="M900,800 L900,600 M870,760 L900,700 L930,760 M865,700 L900,620 L935,700 M875,640 L900,580 L925,640"/>
+          </g>
+          
+          <!-- Pine trees - right group -->
+          <g class="tree-group tree-group-5">
+            <path class="tree-line" d="M1020,800 L1020,480 M970,780 L1020,680 L1070,780 M965,680 L1020,560 L1075,680 M980,560 L1020,460 L1060,560 M995,490 L1020,430 L1045,490"/>
+            <path class="tree-line" d="M1100,800 L1100,620 M1070,760 L1100,700 L1130,760 M1065,700 L1100,620 L1135,700 M1075,640 L1100,580 L1125,640"/>
+            <path class="tree-line" d="M1160,800 L1160,680 M1140,760 L1160,720 L1180,760 M1135,720 L1160,670 L1185,720"/>
+          </g>
+          
+          <!-- Ground line -->
+          <path class="ground-line" d="M0,800 Q300,790 600,795 T1200,800"/>
+          
+          <!-- Distant mountains/hills -->
+          <g class="mountain-group">
+            <path class="mountain-line" d="M0,650 Q150,580 300,620 T600,590 T900,610 T1200,640"/>
+            <path class="mountain-line mountain-far" d="M0,600 Q200,520 400,560 T800,530 T1200,580"/>
+          </g>
+          
+          <!-- Birds -->
+          <g class="bird-group">
+            <path class="bird-line" d="M200,300 Q210,290 220,300 Q230,290 240,300"/>
+            <path class="bird-line" d="M280,250 Q288,242 296,250 Q304,242 312,250"/>
+            <path class="bird-line" d="M350,320 Q358,312 366,320 Q374,312 382,320"/>
+            <path class="bird-line" d="M800,280 Q810,270 820,280 Q830,270 840,280"/>
+            <path class="bird-line" d="M900,220 Q908,212 916,220 Q924,212 932,220"/>
+          </g>
+        </svg>
+      </div>
+      
+      <!-- Poem text that updates on scroll -->
+      <div class="heaven-content">
+        <h2 class="poem-title heaven-title">heaven</h2>
+        
+        <div class="heaven-poem-container">
+          <div class="heaven-line-wrapper">
+            <p class="heaven-line" data-line="0">I don't believe in heaven</p>
+            <p class="heaven-line" data-line="1">After all</p>
+            <p class="heaven-line" data-line="2">there's nothing.</p>
+            <p class="heaven-line heaven-line-pause" data-line="3">But if I would</p>
+            <p class="heaven-line" data-line="4">a cabin in the forest</p>
+            <p class="heaven-line" data-line="5">fire</p>
+            <p class="heaven-line" data-line="6">fresh grounded coffee beans</p>
+            <p class="heaven-line" data-line="7">your hands holding a mug</p>
+            <p class="heaven-line" data-line="8">snow and summer at will</p>
+            <p class="heaven-line heaven-line-empty" data-line="9">&nbsp;</p>
+            <p class="heaven-line heaven-line-aside" data-line="10">Also naps <br><span class="heaven-parenthetical">(why do I always sleep better during the day?)</span></p>
+            <p class="heaven-line" data-line="11">The sharpest knife slices through meat</p>
+            <p class="heaven-line" data-line="12">while the oil heats up.</p>
+            <p class="heaven-line heaven-line-fragment" data-line="13">rosemary</p>
+            <p class="heaven-line" data-line="14">my daughter's tiny mind curiosity</p>
+            <p class="heaven-line" data-line="15">although she grew wiser than her papa</p>
+            <p class="heaven-line heaven-line-dialogue" data-line="16">— Friends are coming dad, can we get some cider?</p>
+            <p class="heaven-line heaven-line-emphasis" data-line="17">An infinite hug</p>
+            <p class="heaven-line" data-line="18">Even when seasons show their face,</p>
+            <p class="heaven-line" data-line="19">the sowing, the wait, the harvest,</p>
+            <p class="heaven-line heaven-line-emphasis" data-line="20">everything is now</p>
+            <p class="heaven-line heaven-line-soft" data-line="21">A postcard.</p>
+            <p class="heaven-line heaven-line-soft" data-line="22">Some books.</p>
+            <p class="heaven-line heaven-line-coda" data-line="23">Did you know that potatoes are healthy after all?</p>
+            <p class="heaven-line heaven-line-empty" data-line="24">&nbsp;</p>
+            <p class="heaven-line heaven-line-empty" data-line="25">&nbsp;</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll height extender for the pinned effect -->
+      <div class="heaven-scroll-spacer"></div>
+    </section>
+
+    <!-- Section 4: End -->
+    <section class="section section-end" id="end">
+      <div class="end-content">
+        <p class="end-text">that's all for now</p>
       </div>
     </section>
 

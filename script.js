@@ -170,6 +170,37 @@ if (firstWish && specksOfDust) {
 }
 
 // =====================
+// FLOATING LETTERS FADEOUT
+// =====================
+const heavenSectionForFade = document.querySelector('.section-heaven');
+let lettersRemoved = false;
+
+if (heavenSectionForFade) {
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !lettersRemoved) {
+        lettersRemoved = true;
+        const floatingLetters = document.querySelectorAll('.floating-letter');
+        // Fade out floating letters permanently
+        floatingLetters.forEach((letter, i) => {
+          setTimeout(() => {
+            letter.classList.add('fade-out');
+            // Remove from DOM after animation
+            setTimeout(() => letter.remove(), 1000);
+          }, i * 50);
+        });
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-10% 0px 0px 0px',
+    threshold: 0
+  });
+  
+  fadeObserver.observe(heavenSectionForFade);
+}
+
+// =====================
 // SCATTERED WORDS
 // =====================
 function animateScatteredWords(section) {
@@ -283,6 +314,7 @@ window.addEventListener('scroll', () => {
     window.requestAnimationFrame(() => {
       updateScrollProgress();
       updateParallax();
+      updateScrollHint();
       ticking = false;
     });
     ticking = true;
@@ -302,10 +334,51 @@ window.addEventListener('resize', () => {
 });
 
 // =====================
+// SCROLL HINT
+// =====================
+const scrollHint = document.querySelector('.scroll-hint');
+const endSection = document.querySelector('.section-end');
+let pulseTimeout = null;
+let hasScrolled = false;
+
+function updateScrollHint() {
+  if (!scrollHint) return;
+  
+  const scrollTop = window.scrollY;
+  
+  // Hide when end section is visible
+  if (endSection) {
+    const endRect = endSection.getBoundingClientRect();
+    if (endRect.top < window.innerHeight * 0.8) {
+      scrollHint.style.opacity = '0';
+      scrollHint.style.pointerEvents = 'none';
+      return;
+    } else {
+      scrollHint.style.opacity = '';
+      scrollHint.style.pointerEvents = '';
+    }
+  }
+  
+  // Only pulse after first scroll
+  if (scrollTop > 0) {
+    hasScrolled = true;
+  }
+  
+  if (hasScrolled) {
+    scrollHint.classList.add('pulsing');
+    clearTimeout(pulseTimeout);
+    pulseTimeout = setTimeout(() => {
+      scrollHint.classList.remove('pulsing');
+    }, 1500);
+  }
+}
+
+// =====================
 // INITIALIZATION
 // =====================
 document.addEventListener('DOMContentLoaded', () => {
   updateScrollProgress();
+  // Don't call updateScrollHint on load to avoid pulsing
   
   // Add loaded class after a brief delay for entrance animations
   setTimeout(() => {
@@ -381,3 +454,154 @@ class TextScramble {
 
 // Usage: const scramble = new TextScramble(document.querySelector('.title'));
 // scramble.setText('NEW TEXT');
+
+// =====================
+// HEAVEN SECTION - SCROLL TEXT & SVG DRAWING
+// =====================
+const heavenSection = document.querySelector('.section-heaven');
+const heavenTitle = document.querySelector('.heaven-title');
+const heavenLines = document.querySelectorAll('.heaven-line');
+const forestPaths = document.querySelectorAll('.section-heaven .tree-line, .section-heaven .ground-line, .section-heaven .mountain-line, .section-heaven .bird-line');
+
+if (heavenSection && heavenLines.length > 0) {
+  let currentLine = -1;
+  let hasStarted = false;
+  
+  // Calculate path lengths and set up stroke-dasharray
+  forestPaths.forEach(path => {
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+  });
+  
+  function updateHeavenSection() {
+    const rect = heavenSection.getBoundingClientRect();
+    const sectionHeight = heavenSection.offsetHeight;
+    const viewportHeight = window.innerHeight;
+    
+    // Check if section is in view
+    if (rect.top < viewportHeight && rect.bottom > 0) {
+      // Show title when section enters view
+      if (!hasStarted && rect.top < viewportHeight * 0.5) {
+        hasStarted = true;
+        heavenTitle.classList.add('visible');
+      }
+      
+      // Calculate scroll progress within the section (0 to 1)
+      const scrollProgress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - viewportHeight)));
+      
+      // Title must appear first, then lines start after a delay
+      const titleDelay = 0.03; // Wait for title to appear before showing lines
+      const adjustedProgress = Math.max(0, (scrollProgress - titleDelay) / (1 - titleDelay));
+      
+      // Determine which line to show based on progress
+      const totalLines = heavenLines.length;
+      const newLine = scrollProgress < titleDelay ? -1 : Math.min(Math.floor(adjustedProgress * totalLines), totalLines - 1);
+      
+      // Update active line
+      if (newLine !== currentLine) {
+        heavenLines.forEach((line, index) => {
+          const lineNum = parseInt(line.getAttribute('data-line'));
+          
+          // Lines 0-3 accumulate and stay visible until line 4
+          if (lineNum <= 3) {
+            if (newLine >= lineNum && newLine <= 3) {
+              line.classList.add('active');
+              line.classList.remove('fading-out');
+            } else if (newLine > 3) {
+              line.classList.remove('active');
+              line.classList.add('fading-out');
+              setTimeout(() => line.classList.remove('fading-out'), 600);
+            } else {
+              // newLine < lineNum (including -1), hide the line
+              line.classList.remove('active', 'fading-out');
+            }
+          // Lines 11-12 accumulate and stay visible until line 13
+          } else if (lineNum >= 11 && lineNum <= 12) {
+            if (newLine >= lineNum && newLine <= 12) {
+              line.classList.add('active');
+              line.classList.remove('fading-out');
+            } else if (newLine > 12) {
+              line.classList.remove('active');
+              line.classList.add('fading-out');
+              setTimeout(() => line.classList.remove('fading-out'), 600);
+            } else {
+              line.classList.remove('active', 'fading-out');
+            }
+          // Lines 14-17 accumulate and stay visible until line 18
+          } else if (lineNum >= 14 && lineNum <= 17) {
+            if (newLine >= lineNum && newLine <= 17) {
+              line.classList.add('active');
+              line.classList.remove('fading-out');
+            } else if (newLine > 17) {
+              line.classList.remove('active');
+              line.classList.add('fading-out');
+              setTimeout(() => line.classList.remove('fading-out'), 600);
+            } else {
+              line.classList.remove('active', 'fading-out');
+            }
+          // Lines 18-20 accumulate and stay visible until line 21
+          } else if (lineNum >= 18 && lineNum <= 20) {
+            if (newLine >= lineNum && newLine <= 20) {
+              line.classList.add('active');
+              line.classList.remove('fading-out');
+            } else if (newLine > 20) {
+              line.classList.remove('active');
+              line.classList.add('fading-out');
+              setTimeout(() => line.classList.remove('fading-out'), 600);
+            } else {
+              line.classList.remove('active', 'fading-out');
+            }
+          } else {
+            // Other lines: show one at a time
+            if (index === newLine) {
+              line.classList.remove('fading-out');
+              line.classList.add('active');
+            } else if (index === currentLine) {
+              line.classList.remove('active');
+              line.classList.add('fading-out');
+              setTimeout(() => line.classList.remove('fading-out'), 600);
+            } else {
+              line.classList.remove('active', 'fading-out');
+            }
+          }
+        });
+        currentLine = newLine;
+      }
+      
+      // Draw SVG paths based on scroll progress
+      forestPaths.forEach((path, index) => {
+        const length = path.getTotalLength();
+        // Stagger the drawing of different elements
+        const delay = parseFloat(getComputedStyle(path).getPropertyValue('--draw-delay')) || 0;
+        const adjustedProgress = Math.max(0, Math.min(1, (scrollProgress - delay) / (0.7 - delay)));
+        const drawLength = length * (1 - adjustedProgress);
+        path.style.strokeDashoffset = Math.max(0, drawLength);
+      });
+      
+      // Fade out everything when approaching the end
+      const heavenContent = document.querySelector('.heaven-content');
+      const forestSvg = document.querySelector('.forest-svg');
+      const fadeStart = 0.98; // Start fading at 98% scroll
+      const fadeEnd = 1.0;
+      
+      if (scrollProgress > fadeStart) {
+        const fadeProgress = (scrollProgress - fadeStart) / (fadeEnd - fadeStart);
+        const opacity = Math.max(0, 1 - fadeProgress);
+        if (heavenContent) heavenContent.style.opacity = opacity;
+        if (forestSvg) forestSvg.style.opacity = opacity * 0.6; // Forest was at 0.6 opacity
+      } else {
+        if (heavenContent) heavenContent.style.opacity = 1;
+        if (forestSvg) forestSvg.style.opacity = 0.6;
+      }
+    }
+  }
+  
+  // Add to scroll handler
+  window.addEventListener('scroll', () => {
+    requestAnimationFrame(updateHeavenSection);
+  });
+  
+  // Initial check
+  updateHeavenSection();
+}

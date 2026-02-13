@@ -906,7 +906,7 @@ body {
    ===================== */
 .section-heaven {
   position: relative;
-  min-height: 1270vh; /* Extra height for scroll effect */
+  min-height: 1650vh; /* Extra height for scroll effect - 30% longer for slower transitions */
   background: linear-gradient(
     180deg,
     var(--bg) 0%,
@@ -1138,13 +1138,62 @@ body {
   stroke: #4a5a50;
 }
 
-/* Tree groups with different draw timings */
-.tree-group-1 .tree-line { --draw-delay: 0; }
-.tree-group-2 .tree-line { --draw-delay: 0.1; }
-.tree-group-3 .tree-line { --draw-delay: 0.2; }
-.tree-group-4 .tree-line { --draw-delay: 0.3; }
-.tree-group-5 .tree-line { --draw-delay: 0.4; }
+/* Tree groups with different draw timings - right side first, then left */
+.tree-group-3 .tree-line { --draw-delay: 0; }
+.tree-group-4 .tree-line { --draw-delay: 0.08; }
+.tree-group-1 .tree-line { --draw-delay: 0.25; }
+.tree-group-2 .tree-line { --draw-delay: 0.35; }
 
+/* Ground, mountain, bird delays - right side first */
+.ground-line-right { --draw-delay: 0.05; }
+.ground-line:not(.ground-line-right) { --draw-delay: 0.3; }
+.bird-group-right .bird-line { --draw-delay: 0.12; }
+.bird-group:not(.bird-group-right) .bird-line { --draw-delay: 0.4; }
+/* Mountains draw across full scroll - no delay needed */
+
+/* =====================
+   HUG SVG STYLES
+   ===================== */
+.hug-svg {
+  position: fixed;
+  bottom: 15%;
+  right: 5%;
+  width: 180px;
+  height: 250px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hug-line {
+  fill: none;
+  stroke: #4a4a45;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.hug-dad {
+  stroke: #3a3a35;
+  stroke-width: 2;
+}
+
+.hug-daughter {
+  stroke: #5a5a55;
+  stroke-width: 1.6;
+}
+
+.hug-arm {
+  stroke-width: 1.5;
+}
+
+.hug-embrace {
+  stroke: #6a6a65;
+  stroke-width: 1.2;
+}
 /* Extra scroll space */
 .heaven-scroll-spacer {
   height: 50vh;
@@ -1153,7 +1202,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .section-heaven {
-    min-height: 1100vh;
+    min-height: 1430vh;
   }
   
   .heaven-poem-container {
@@ -1163,5 +1212,16 @@ body {
   .forest-svg {
     height: 60%;
     opacity: 0.4;
+  }
+  
+  .hug-svg {
+    width: 120px;
+    height: 170px;
+    right: 2%;
+    bottom: 10%;
+  }
+  
+  .heaven-line-coda {
+    font-size: 1em;
   }
 }

@@ -467,6 +467,17 @@ if (heavenSection && heavenLines.length > 0) {
   let currentLine = -1;
   let hasStarted = false;
   
+  // Get hug SVG element and its paths
+  const hugSvg = document.querySelector('.hug-svg');
+  const hugPaths = hugSvg ? hugSvg.querySelectorAll('.hug-line') : [];
+  
+  // Calculate path lengths for hug SVG
+  hugPaths.forEach(path => {
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+  });
+  
   // Calculate path lengths and set up stroke-dasharray
   forestPaths.forEach(path => {
     const length = path.getTotalLength();
@@ -569,14 +580,62 @@ if (heavenSection && heavenLines.length > 0) {
         currentLine = newLine;
       }
       
+      // Draw hug SVG progressively between lines 14-17
+      // Line 14 = "my daughter's tiny mind curiosity"
+      // Line 17 = "An infinite hug"
+      if (hugSvg && hugPaths.length > 0) {
+        const hugStartLine = 14;
+        const hugEndLine = 17;
+        const totalLines = heavenLines.length;
+        
+        // Calculate progress within the hug drawing range
+        const startProgress = hugStartLine / totalLines;
+        const endProgress = (hugEndLine + 1) / totalLines;
+        
+        let hugProgress = 0;
+        if (adjustedProgress >= startProgress && adjustedProgress <= endProgress) {
+          hugProgress = (adjustedProgress - startProgress) / (endProgress - startProgress);
+        } else if (adjustedProgress > endProgress) {
+          hugProgress = 1;
+        }
+        
+        // Show/hide SVG container based on progress
+        if (hugProgress > 0) {
+          hugSvg.style.opacity = Math.min(0.65, hugProgress * 2);
+          hugSvg.style.transform = 'translateX(0)';
+        } else {
+          hugSvg.style.opacity = 0;
+          hugSvg.style.transform = 'translateX(30px)';
+        }
+        
+        // Draw each path based on progress with staggering
+        hugPaths.forEach((path, index) => {
+          const length = path.getTotalLength();
+          const pathCount = hugPaths.length;
+          // Stagger each path slightly
+          const pathDelay = index / pathCount * 0.4;
+          const pathProgress = Math.max(0, Math.min(1, (hugProgress - pathDelay) / (1 - pathDelay)));
+          const drawLength = length * (1 - pathProgress);
+          path.style.strokeDashoffset = drawLength;
+        });
+      }
+      
       // Draw SVG paths based on scroll progress
       forestPaths.forEach((path, index) => {
         const length = path.getTotalLength();
-        // Stagger the drawing of different elements
-        const delay = parseFloat(getComputedStyle(path).getPropertyValue('--draw-delay')) || 0;
-        const adjustedProgress = Math.max(0, Math.min(1, (scrollProgress - delay) / (0.7 - delay)));
-        const drawLength = length * (1 - adjustedProgress);
-        path.style.strokeDashoffset = Math.max(0, drawLength);
+        const isMountain = path.classList.contains('mountain-line');
+        
+        if (isMountain) {
+          // Mountains draw across the full scroll duration
+          const drawLength = length * (1 - scrollProgress);
+          path.style.strokeDashoffset = Math.max(0, drawLength);
+        } else {
+          // Other elements use staggered delays
+          const delay = parseFloat(getComputedStyle(path).getPropertyValue('--draw-delay')) || 0;
+          const adjustedProgress = Math.max(0, Math.min(1, (scrollProgress - delay) / (0.7 - delay)));
+          const drawLength = length * (1 - adjustedProgress);
+          path.style.strokeDashoffset = Math.max(0, drawLength);
+        }
       });
       
       // Fade out everything when approaching the end

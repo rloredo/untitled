@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #e8e8e8;
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+      color: #f0f0f0;
+      position: relative;
+    }
+
+    h1.glitch::before,
+    h1.glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    h1.glitch::before {
+      animation: glitch-1 7s infinite;
+      color: #666;
+    }
+
+    h1.glitch::after {
+      animation: glitch-2 7s infinite;
+      color: #999;
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); opacity: 0; }
+      13% { transform: translate(0); opacity: 0; }
+      14% { transform: translate(-2px, 1px); opacity: 0.4; }
+      15% { transform: translate(2px, -1px); opacity: 0.4; }
+      16% { transform: translate(0); opacity: 0; }
+      42% { transform: translate(0); opacity: 0; }
+      43% { transform: translate(1px, -1px); opacity: 0.4; }
+      44% { transform: translate(-1px, 1px); opacity: 0.4; }
+      45% { transform: translate(0); opacity: 0; }
+      56% { transform: translate(0); opacity: 0; }
+      57% { transform: translate(-1px, -1px); opacity: 0.4; }
+      58% { transform: translate(2px, 1px); opacity: 0.4; }
+      59% { transform: translate(0); opacity: 0; }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); opacity: 0; }
+      14% { transform: translate(0); opacity: 0; }
+      15% { transform: translate(2px, 1px); opacity: 0.4; }
+      16% { transform: translate(-2px, -1px); opacity: 0.4; }
+      17% { transform: translate(0); opacity: 0; }
+      43% { transform: translate(0); opacity: 0; }
+      44% { transform: translate(-1px, 1px); opacity: 0.4; }
+      45% { transform: translate(1px, -1px); opacity: 0.4; }
+      46% { transform: translate(0); opacity: 0; }
+      57% { transform: translate(0); opacity: 0; }
+      58% { transform: translate(1px, 1px); opacity: 0.4; }
+      59% { transform: translate(-2px, -1px); opacity: 0.4; }
+      60% { transform: translate(0); opacity: 0; }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    a {
+      color: #888;
+      text-decoration: none;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease, letter-spacing 0.3s ease;
+    }
+
+    a:hover {
+      color: #e8e8e8;
+      letter-spacing: 0.15em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="glitch" data-text="UNTITLED">UNTITLED</h1>
+    <nav>
+      <a href="index.html#destiempo">destiempo</a>
+      <a href="index.html#heaven">heaven</a>
+    </nav>
+  </div>
+</body>
+</html>

@@ -1225,3 +1225,58 @@ body {
     font-size: 1em;
   }
 }
+
+/* =====================
+   SECTION: EXCEPCIONES
+   ===================== */
+.section-excepciones {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  gap: 3rem;
+}
+
+.section-excepciones .video-container {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+}
+
+.section-excepciones .video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.excepciones-poem {
+  max-width: 600px;
+  text-align: center;
+  font-family: var(--font-poem);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #111;
+}
+
+.poem-group {
+  margin-bottom: 1.5rem;
+  opacity: 0.08;
+  transition: opacity 0.4s ease;
+  cursor: default;
+}
+
+.poem-group:hover {
+  opacity: 1;
+}
+
+.poem-group p {
+  margin: 0.3rem 0;
+}
+
+.poem-group-final {
+  font-style: italic;
+  margin-top: 2rem;
+}

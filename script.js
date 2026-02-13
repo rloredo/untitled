@@ -315,6 +315,7 @@ window.addEventListener('scroll', () => {
       updateScrollProgress();
       updateParallax();
       updateScrollHint();
+      checkScrollDownHint();
       ticking = false;
     });
     ticking = true;
@@ -340,6 +341,32 @@ const scrollHint = document.querySelector('.scroll-hint');
 const endSection = document.querySelector('.section-end');
 let pulseTimeout = null;
 let hasScrolled = false;
+
+// =====================
+// SCROLL DOWN HINT (anchor navigation)
+// =====================
+const scrollDownHint = document.querySelector('.scroll-down-hint');
+let scrollDownInitialY = null;
+
+// Show hint when page loads with anchor
+if (window.location.hash && scrollDownHint) {
+  // Small delay to let page scroll to anchor
+  setTimeout(() => {
+    scrollDownInitialY = window.scrollY;
+    scrollDownHint.classList.add('visible');
+  }, 300);
+}
+
+// Hide hint on scroll
+function checkScrollDownHint() {
+  if (!scrollDownHint || scrollDownInitialY === null) return;
+  
+  const scrollDelta = Math.abs(window.scrollY - scrollDownInitialY);
+  if (scrollDelta > 50) {
+    scrollDownHint.classList.remove('visible');
+    scrollDownInitialY = null;
+  }
+}
 
 function updateScrollHint() {
   if (!scrollHint) return;

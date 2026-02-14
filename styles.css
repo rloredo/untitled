@@ -1315,3 +1315,122 @@ body {
   font-style: italic;
   margin-top: 2rem;
 }
+
+/* Spacer between sections */
+.section-spacer {
+  height: 30vh;
+  background: #ffffff;
+}
+
+/* =====================
+   SECTION: ANECDOTE
+   ===================== */
+.section-anecdote {
+  background: #000;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anecdote-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anecdote-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.anecdote-title {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: #000;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.anecdote-poem {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #000;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.85), 0 0 30px rgba(255, 255, 255, 0.6);
+  padding: 1.5rem;
+  max-width: 85vw;
+  max-height: 75vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.anecdote-poem p {
+  margin: 0.05em 0;
+}
+
+.anecdote-poem p.spaced {
+  margin-top: 0.3em;
+}
+
+.anecdote-poem p.stanza-break {
+  margin-top: 0.7em;
+}
+
+.anecdote-poem p.final {
+  margin-top: 0.9em;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .anecdote-poem {
+    font-size: clamp(0.7rem, 3.5vw, 1rem);
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    padding: 1rem;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  .anecdote-poem p {
+    margin: 0.08em 0;
+  }
+  
+  .anecdote-poem p.spaced {
+    margin-top: 0.3em;
+  }
+  
+  .anecdote-poem p.stanza-break {
+    margin-top: 0.7em;
+  }
+  
+  .anecdote-poem p.final {
+    margin-top: 0.9em;
+  }
+  
+  .anecdote-image {
+    object-position: center;
+  }
+}

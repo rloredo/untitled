@@ -1404,6 +1404,11 @@ body {
   white-space: nowrap;
 }
 
+.anecdote-poem .partial {
+  font-style: italic;
+  letter-spacing: 0.15em;
+}
+
 @media (max-width: 600px) {
   .anecdote-poem {
     font-size: clamp(0.7rem, 3.5vw, 1rem);

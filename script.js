@@ -348,8 +348,9 @@ let hasScrolled = false;
 const scrollDownHint = document.querySelector('.scroll-down-hint');
 let scrollDownInitialY = null;
 
-// Show hint when page loads with anchor
-if (window.location.hash && scrollDownHint) {
+// Show hint when page loads with anchor to destiempo or heaven
+const scrollDownSections = ['#destiempo', '#heaven'];
+if (window.location.hash && scrollDownHint && scrollDownSections.includes(window.location.hash)) {
   // Small delay to let page scroll to anchor
   setTimeout(() => {
     scrollDownInitialY = window.scrollY;
@@ -690,4 +691,71 @@ if (heavenSection && heavenLines.length > 0) {
   
   // Initial check
   updateHeavenSection();
+}
+
+// =====================
+// BASQUE CONUNDRUM - PAGE NAVIGATION
+// =====================
+const basqueSection = document.querySelector('.section-basque');
+
+if (basqueSection) {
+  const pages = basqueSection.querySelectorAll('.basque-page');
+  const prevBtn = basqueSection.querySelector('.basque-prev');
+  const nextBtn = basqueSection.querySelector('.basque-next');
+  const indexBtns = basqueSection.querySelectorAll('.basque-index-btn');
+  let currentPage = 0;
+  let isAnimating = false;
+
+  function goToPage(index) {
+    if (isAnimating || index === currentPage || index < 0 || index >= pages.length) return;
+    isAnimating = true;
+
+    const direction = index > currentPage ? 1 : -1;
+    const outgoing = pages[currentPage];
+    const incoming = pages[index];
+
+    // Exit current page
+    outgoing.classList.remove('active');
+    outgoing.style.transform = `translateX(${-40 * direction}px)`;
+    outgoing.style.opacity = '0';
+
+    // Prepare incoming page
+    incoming.style.transition = 'none';
+    incoming.style.transform = `translateX(${40 * direction}px)`;
+    incoming.style.opacity = '0';
+
+    // Force reflow
+    incoming.offsetHeight;
+
+    // Animate incoming
+    incoming.style.transition = '';
+    incoming.classList.add('active');
+    incoming.style.transform = '';
+    incoming.style.opacity = '';
+    incoming.scrollTop = 0;
+
+    // Update index buttons
+    indexBtns.forEach(btn => btn.classList.remove('active'));
+    indexBtns[index].classList.add('active');
+
+    // Update prev/next state
+    currentPage = index;
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === pages.length - 1;
+
+    setTimeout(() => { isAnimating = false; }, 500);
+  }
+
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+  indexBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = parseInt(btn.getAttribute('data-target')) - 1;
+      goToPage(target);
+    });
+  });
+
+  // Initial state
+  prevBtn.disabled = true;
 }

@@ -1625,8 +1625,19 @@ body.index-page {
 }
 
 .basque-text p {
-  margin: 0 0 1.5em 0;
-  text-indent: 1.5em;
+  margin: 0 0 1em 0;
+}
+
+.basque-text p.dialogue {
+  margin: 0;
+}
+
+.basque-text p.dialogue + p:not(.dialogue) {
+  margin-top: 1em;
+}
+
+.basque-text p:not(.dialogue) + p.dialogue {
+  margin-top: 1em;
 }
 
 .basque-text p:first-child {

@@ -698,6 +698,13 @@ if (heavenSection && heavenLines.length > 0) {
 // =====================
 const basqueSection = document.querySelector('.section-basque');
 
+// Auto-detect dialogue paragraphs
+document.querySelectorAll('.basque-text p').forEach(p => {
+  if (p.textContent.trimStart().startsWith('—')) {
+    p.classList.add('dialogue');
+  }
+});
+
 if (basqueSection) {
   const pages = basqueSection.querySelectorAll('.basque-page');
   const prevBtn = basqueSection.querySelector('.basque-prev');

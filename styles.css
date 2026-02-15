@@ -1628,6 +1628,10 @@ body.index-page {
   margin: 0 0 1em 0;
 }
 
+.basque-text blockquote {
+  font-style: italic;
+}
+
 .basque-text p.dialogue {
   margin: 0;
 }

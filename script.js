@@ -765,4 +765,34 @@ if (basqueSection) {
 
   // Initial state
   prevBtn.disabled = true;
+
+  // Scroll past top/bottom to change chapter
+  let scrollAccumulator = 0;
+  const scrollThreshold = 150;
+  let scrollTimeout = null;
+
+  const pageContainer = basqueSection.querySelector('.basque-page-container');
+  pageContainer.addEventListener('wheel', (e) => {
+    const activePage = pages[currentPage];
+    const atTop = activePage.scrollTop <= 0;
+    const atBottom = activePage.scrollTop + activePage.clientHeight >= activePage.scrollHeight - 1;
+
+    if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) {
+      e.preventDefault();
+      scrollAccumulator += e.deltaY;
+
+      if (scrollAccumulator > scrollThreshold && atBottom) {
+        scrollAccumulator = 0;
+        goToPage(currentPage + 1);
+      } else if (scrollAccumulator < -scrollThreshold && atTop) {
+        scrollAccumulator = 0;
+        goToPage(currentPage - 1);
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => { scrollAccumulator = 0; }, 500);
+    } else {
+      scrollAccumulator = 0;
+    }
+  }, { passive: false });
 }

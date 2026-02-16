@@ -1927,7 +1927,7 @@ body.index-page {
 /* ---- Intro text ---- */
 .night-intro {
   font-family: var(--font-poem);
-  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 2;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 1.5rem;
@@ -1941,7 +1941,7 @@ body.index-page {
 /* ---- Blockquotes ---- */
 .night-quote {
   font-family: var(--font-poem);
-  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 2.1;
   margin: 0 0 2.5rem 0;
   padding: 1.5rem 2rem;

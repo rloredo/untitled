@@ -1527,7 +1527,7 @@ body.index-page {
 .index-page a {
   color: #888;
   text-decoration: none;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(0.95rem, 2.2vw, 1.3rem);
   font-weight: 300;
   font-style: italic;
   letter-spacing: 0.1em;
@@ -1561,8 +1561,8 @@ body.index-page {
   font-weight: 300;
   letter-spacing: 0.25em;
   color: #555;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.1rem;
 }
 
 /* =====================

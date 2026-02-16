@@ -919,9 +919,20 @@ body {
 .section-end {
   min-height: 50vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  background: var(--bg);
+  padding-bottom: 6vh;
+  background: linear-gradient(
+    180deg,
+    #020210 0%,
+    #0e0e28 10%,
+    #2a2a48 25%,
+    #606070 42%,
+    #a0a0a8 58%,
+    #d0d0d2 75%,
+    #f0f0f0 90%,
+    var(--bg) 100%
+  );
 }
 
 .end-content {
@@ -1316,10 +1327,46 @@ body {
   margin-top: 2rem;
 }
 
-/* Spacer between sections */
+/* Spacer transitions between sections */
 .section-spacer {
-  height: 30vh;
+  height: 50vh;
+  position: relative;
+}
+
+/* excepciones (white) → anecdote (black) */
+.spacer-excepciones-anecdote {
   background: #ffffff;
+}
+
+/* anecdote (black) → basque (warm cream) */
+.spacer-anecdote-basque {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fdfcfa 40%,
+    #faf8f4 100%
+  );
+}
+
+/* basque (warm cream) → night poem (deep blue) */
+.spacer-basque-night {
+  height: 150vh;
+  background: linear-gradient(
+    180deg,
+    #faf8f4 0%,
+    #f0ece4 8%,
+    #e0dace 16%,
+    #c8c0b0 25%,
+    #a89888 35%,
+    #887870 44%,
+    #6a6070 52%,
+    #504868 60%,
+    #3a3058 68%,
+    #281e4a 76%,
+    #1a1840 84%,
+    #0a0a2e 92%,
+    #030312 100%
+  );
 }
 
 /* =====================

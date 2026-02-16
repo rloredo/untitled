@@ -65,6 +65,11 @@ document.querySelectorAll('.poem-title, .stanza').forEach(el => {
   poemObserver.observe(el);
 });
 
+// Observe night poem elements
+document.querySelectorAll('.night-title, .night-reveal').forEach(el => {
+  poemObserver.observe(el);
+});
+
 // =====================
 // SPECKS OF DUST EXPLOSION
 // =====================

@@ -1752,3 +1752,303 @@ body.index-page {
     margin-top: 1rem;
   }
 }
+
+/* =====================
+   SECTION: NIGHT POEM
+   ===================== */
+.section-night-poem {
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  background: linear-gradient(
+    180deg,
+    #030312 0%,
+    #060620 15%,
+    #0a0a2e 40%,
+    #080828 60%,
+    #050518 85%,
+    #020210 100%
+  );
+  overflow: hidden;
+  padding: 10vh 2rem 12vh;
+}
+
+/* ---- Star field ---- */
+.night-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.night-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: night-twinkle var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
+}
+
+/* scatter the 40 stars */
+.night-star:nth-child(1)  { width:2px;height:2px; top:3%;  left:8%;  --dur:3.2s; --delay:0s; }
+.night-star:nth-child(2)  { width:1px;height:1px; top:7%;  left:22%; --dur:4.8s; --delay:-1.2s; }
+.night-star:nth-child(3)  { width:3px;height:3px; top:5%;  left:45%; --dur:5.5s; --delay:-0.5s; }
+.night-star:nth-child(4)  { width:1px;height:1px; top:2%;  left:67%; --dur:3.8s; --delay:-2.1s; }
+.night-star:nth-child(5)  { width:2px;height:2px; top:9%;  left:83%; --dur:4.2s; --delay:-3.4s; }
+.night-star:nth-child(6)  { width:1px;height:1px; top:14%; left:5%;  --dur:6.0s; --delay:-0.8s; }
+.night-star:nth-child(7)  { width:2px;height:2px; top:12%; left:35%; --dur:3.5s; --delay:-4.0s; }
+.night-star:nth-child(8)  { width:1px;height:1px; top:18%; left:55%; --dur:5.2s; --delay:-1.5s; }
+.night-star:nth-child(9)  { width:2px;height:2px; top:16%; left:72%; --dur:4.0s; --delay:-2.8s; }
+.night-star:nth-child(10) { width:1px;height:1px; top:20%; left:91%; --dur:3.6s; --delay:-0.3s; }
+.night-star:nth-child(11) { width:3px;height:3px; top:25%; left:15%; --dur:5.8s; --delay:-3.2s; }
+.night-star:nth-child(12) { width:1px;height:1px; top:28%; left:40%; --dur:4.5s; --delay:-1.8s; }
+.night-star:nth-child(13) { width:2px;height:2px; top:22%; left:60%; --dur:3.3s; --delay:-4.5s; }
+.night-star:nth-child(14) { width:1px;height:1px; top:30%; left:78%; --dur:5.0s; --delay:-0.6s; }
+.night-star:nth-child(15) { width:2px;height:2px; top:35%; left:10%; --dur:4.7s; --delay:-2.4s; }
+.night-star:nth-child(16) { width:1px;height:1px; top:33%; left:28%; --dur:3.9s; --delay:-3.8s; }
+.night-star:nth-child(17) { width:1px;height:1px; top:38%; left:50%; --dur:5.4s; --delay:-1.0s; }
+.night-star:nth-child(18) { width:2px;height:2px; top:40%; left:70%; --dur:4.1s; --delay:-2.6s; }
+.night-star:nth-child(19) { width:1px;height:1px; top:42%; left:88%; --dur:3.4s; --delay:-4.2s; }
+.night-star:nth-child(20) { width:3px;height:3px; top:48%; left:3%;  --dur:6.2s; --delay:-0.2s; }
+.night-star:nth-child(21) { width:1px;height:1px; top:50%; left:20%; --dur:4.3s; --delay:-3.0s; }
+.night-star:nth-child(22) { width:2px;height:2px; top:52%; left:42%; --dur:3.7s; --delay:-1.4s; }
+.night-star:nth-child(23) { width:1px;height:1px; top:55%; left:63%; --dur:5.6s; --delay:-2.0s; }
+.night-star:nth-child(24) { width:2px;height:2px; top:58%; left:82%; --dur:4.4s; --delay:-4.8s; }
+.night-star:nth-child(25) { width:1px;height:1px; top:62%; left:12%; --dur:3.1s; --delay:-0.9s; }
+.night-star:nth-child(26) { width:1px;height:1px; top:65%; left:33%; --dur:5.1s; --delay:-3.6s; }
+.night-star:nth-child(27) { width:2px;height:2px; top:60%; left:52%; --dur:4.6s; --delay:-1.7s; }
+.night-star:nth-child(28) { width:1px;height:1px; top:68%; left:75%; --dur:3.8s; --delay:-2.3s; }
+.night-star:nth-child(29) { width:2px;height:2px; top:72%; left:6%;  --dur:5.3s; --delay:-4.1s; }
+.night-star:nth-child(30) { width:1px;height:1px; top:75%; left:25%; --dur:4.0s; --delay:-0.4s; }
+.night-star:nth-child(31) { width:3px;height:3px; top:70%; left:48%; --dur:6.5s; --delay:-2.9s; }
+.night-star:nth-child(32) { width:1px;height:1px; top:78%; left:65%; --dur:3.6s; --delay:-1.1s; }
+.night-star:nth-child(33) { width:2px;height:2px; top:80%; left:85%; --dur:5.7s; --delay:-3.5s; }
+.night-star:nth-child(34) { width:1px;height:1px; top:82%; left:18%; --dur:4.2s; --delay:-0.7s; }
+.night-star:nth-child(35) { width:1px;height:1px; top:85%; left:38%; --dur:3.3s; --delay:-4.4s; }
+.night-star:nth-child(36) { width:2px;height:2px; top:88%; left:57%; --dur:5.0s; --delay:-1.9s; }
+.night-star:nth-child(37) { width:1px;height:1px; top:90%; left:78%; --dur:4.8s; --delay:-2.5s; }
+.night-star:nth-child(38) { width:2px;height:2px; top:92%; left:92%; --dur:3.5s; --delay:-3.3s; }
+.night-star:nth-child(39) { width:1px;height:1px; top:95%; left:10%; --dur:5.9s; --delay:-0.1s; }
+.night-star:nth-child(40) { width:2px;height:2px; top:97%; left:50%; --dur:4.5s; --delay:-2.7s; }
+
+@keyframes night-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.4); }
+}
+
+/* ---- Content wrapper ---- */
+.night-content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ---- Title ---- */
+.night-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.night-title.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.night-title-sub {
+  font-size: 0.77em;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- Labels (Prelude / The poem) ---- */
+.night-label {
+  font-family: var(--font-body);
+  font-size: 0.77rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 2rem;
+}
+
+/* ---- Intro text ---- */
+.night-intro {
+  font-family: var(--font-poem);
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.night-intro em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Blockquotes ---- */
+.night-quote {
+  font-family: var(--font-poem);
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  line-height: 2.1;
+  margin: 0 0 2.5rem 0;
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.night-quote p {
+  margin: 0 0 0.8em 0;
+}
+
+.night-quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Book quote — left border, subdued */
+.night-quote-book {
+  color: rgba(200, 210, 230, 0.55);
+  border-left: 1px solid rgba(130, 150, 200, 0.2);
+}
+
+/* Instagram quote — different feel, warmer */
+.night-quote-instagram {
+  color: rgba(220, 200, 190, 0.5);
+  border-left: 1px solid rgba(200, 160, 130, 0.15);
+  font-style: italic;
+}
+
+/* ---- Divider ---- */
+.night-divider {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.15);
+  margin: 5rem 0;
+  letter-spacing: 1em;
+}
+
+/* ---- Poem stanzas ---- */
+.night-stanza {
+  font-family: var(--font-poem);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 2.4;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.night-stanza p {
+  margin: 0;
+  padding: 0.1em 0;
+}
+
+/* The "falling" stanza */
+.night-stanza-fall {
+  padding-left: 1rem;
+}
+
+.night-stanza-fall p {
+  transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+.night-stanza-fall.in-view p:nth-child(1) { transition-delay: 0s; }
+.night-stanza-fall.in-view p:nth-child(2) { transition-delay: 0.1s; }
+.night-stanza-fall.in-view p:nth-child(3) { transition-delay: 0.2s; }
+.night-stanza-fall.in-view p:nth-child(4) { transition-delay: 0.3s; }
+.night-stanza-fall.in-view p:nth-child(5) { transition-delay: 0.4s; }
+.night-stanza-fall.in-view p:nth-child(6) { transition-delay: 0.5s; }
+.night-stanza-fall.in-view p:nth-child(7) { transition-delay: 0.6s; }
+
+/* Last stanza — isolated, quiet */
+.night-stanza-last {
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Refrain: "I was there." ---- */
+.night-refrain {
+  font-family: var(--font-poem);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 2.5rem 0 2.5rem 2rem;
+  letter-spacing: 0.12em;
+  font-style: italic;
+  text-shadow: 0 0 20px rgba(180, 200, 255, 0.15);
+}
+
+/* ---- Special inline spans ---- */
+.night-dim {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.9em;
+  transition: color 2s ease;
+}
+
+.night-up {
+  display: inline-block;
+  color: rgba(180, 200, 255, 0.6);
+  animation: night-float 3s ease-in-out infinite;
+  font-style: italic;
+}
+
+@keyframes night-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ---- P.S. ---- */
+.night-ps {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-poem);
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.25);
+  font-style: italic;
+}
+
+.night-ps p:first-child {
+  font-style: normal;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---- Scroll reveal ---- */
+.night-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.night-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger delays for prelude children */
+.night-prelude .night-reveal:nth-child(1) { transition-delay: 0s; }
+.night-prelude .night-reveal:nth-child(2) { transition-delay: 0.15s; }
+.night-prelude .night-reveal:nth-child(3) { transition-delay: 0.3s; }
+.night-prelude .night-reveal:nth-child(4) { transition-delay: 0.45s; }
+.night-prelude .night-reveal:nth-child(5) { transition-delay: 0.6s; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .section-night-poem {
+    padding: 8vh 1.2rem 10vh;
+  }
+
+  .night-quote {
+    padding: 1rem 1.2rem;
+  }
+
+  .night-stanza-fall {
+    padding-left: 0.5rem;
+  }
+}

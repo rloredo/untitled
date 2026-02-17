@@ -70,6 +70,24 @@ document.querySelectorAll('.night-title, .night-reveal').forEach(el => {
   poemObserver.observe(el);
 });
 
+// Observe table-for-one elements
+document.querySelectorAll('.table-reveal').forEach(el => {
+  poemObserver.observe(el);
+});
+
+// Observe table-for-one section for illustration fade-in
+const tableSection = document.querySelector('.section-table-for-one');
+if (tableSection) {
+  const tableObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { root: null, rootMargin: '0px', threshold: 0.15 });
+  tableObserver.observe(tableSection);
+}
+
 // =====================
 // SPECKS OF DUST EXPLOSION
 // =====================

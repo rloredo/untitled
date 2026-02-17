@@ -27,6 +27,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.8;
   overflow-x: hidden;
+  transition: opacity 0.3s ease;
 }
 
 /* =====================
@@ -914,6 +915,155 @@ body {
 }
 
 /* =====================
+   SECTION: TABLE FOR ONE
+   ===================== */
+.section-table-for-one {
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #f5f0e8 0%,
+    #fdfcfa 8%,
+    #fdfcfa 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 2rem 12vh;
+  position: relative;
+}
+
+/* Candlelight flicker overlay */
+.section-table-for-one::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 35%, rgba(215, 170, 80, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 52% 30%, rgba(230, 190, 100, 0.2) 0%, transparent 55%);
+  animation: candle-light 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-table-for-one > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes candle-light {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1) translateY(0);
+  }
+  15% {
+    opacity: 0.8;
+    transform: scale(1.03) translateY(-2px);
+  }
+  30% {
+    opacity: 0.4;
+    transform: scale(0.97) translateY(2px);
+  }
+  45% {
+    opacity: 0.85;
+    transform: scale(1.04) translateY(-3px);
+  }
+  60% {
+    opacity: 0.45;
+    transform: scale(0.98) translateY(1px);
+  }
+  75% {
+    opacity: 0.75;
+    transform: scale(1.02) translateY(-1px);
+  }
+  90% {
+    opacity: 0.55;
+    transform: scale(1) translateY(2px);
+  }
+}
+
+/* Content */
+.table-content {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.table-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: #555;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.table-subtitle {
+  font-family: var(--font-poem);
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.table-prose {
+  font-family: var(--font-poem);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 2.2;
+  color: #333;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.table-prose p {
+  margin: 0 0 1.6em 0;
+}
+
+.table-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.table-prose em {
+  font-style: italic;
+  color: #666;
+}
+
+/* Scroll reveal */
+.table-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.table-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger reveal delays */
+.table-prose .table-reveal:nth-child(1) { transition-delay: 0s; }
+.table-prose .table-reveal:nth-child(2) { transition-delay: 0.15s; }
+.table-prose .table-reveal:nth-child(3) { transition-delay: 0.3s; }
+.table-prose .table-reveal:nth-child(4) { transition-delay: 0.45s; }
+.table-prose .table-reveal:nth-child(5) { transition-delay: 0.6s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-table-for-one {
+    padding: 8vh 1.2rem 10vh;
+  }
+
+  .table-prose {
+    text-align: left;
+  }
+}
+
+/* =====================
    END SECTION
    ===================== */
 .section-end {
@@ -924,14 +1074,10 @@ body {
   padding-bottom: 6vh;
   background: linear-gradient(
     180deg,
-    #020210 0%,
-    #0e0e28 10%,
-    #2a2a48 25%,
-    #606070 42%,
-    #a0a0a8 58%,
-    #d0d0d2 75%,
-    #f0f0f0 90%,
-    var(--bg) 100%
+    #eeecea 0%,
+    #e8e6e4 30%,
+    #e0deda 60%,
+    #f0f0f0 100%
   );
 }
 
@@ -1366,6 +1512,36 @@ body {
     #1a1840 84%,
     #0a0a2e 92%,
     #030312 100%
+  );
+}
+
+/* night poem (deep blue) → table for one (warm off-white) */
+.spacer-night-table {
+  height: 80vh;
+  background: linear-gradient(
+    180deg,
+    #020210 0%,
+    #0a0a2e 10%,
+    #1a1840 20%,
+    #2a2848 30%,
+    #443e60 40%,
+    #6a6078 50%,
+    #908898 60%,
+    #b0a8a4 70%,
+    #cdc4b8 80%,
+    #e8dfd4 90%,
+    #f5f0e8 100%
+  );
+}
+
+/* table for one (warm off-white) → end */
+.spacer-table-end {
+  height: 30vh;
+  background: linear-gradient(
+    180deg,
+    #fdfcfa 0%,
+    #f5f4f2 40%,
+    #eeecea 100%
   );
 }
 

@@ -7,9 +7,12 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>body:not(.ready){opacity:0}</style>
 </head>
 <body>
   <div class="scroll-down-hint">scroll down</div>
@@ -887,6 +890,34 @@ they always wash away</p>
       </div>
     </section>
 
+    <!-- Transition: night-poem → table-for-one -->
+    <div class="section-spacer spacer-night-table"></div>
+
+    <!-- Section: Table for One -->
+    <section class="section section-table-for-one" id="table-for-one">
+
+      <!-- Prose content -->
+      <div class="table-content">
+        <h2 class="table-title table-reveal">table for one</h2>
+        <p class="table-subtitle table-reveal">(and his thoughts)</p>
+
+        <div class="table-prose">
+          <p class="table-reveal">A table for one at breakfast is not frowned upon. Nor at lunch on a working day (it can pass for an office break). Dinner is a different story. <em>Just one?</em> the host asks. Still, I'm never really alone, because my thoughts follow me everywhere and they rarely shut up.</p>
+
+          <p class="table-reveal">They are not necessarily profound, let's make that clear. Sometimes they narrate the temperature of the food. Some things are hotter than they look, especially fried things, which I love too much. Other times they turn their attention outward and start asking questions about the room. <em>What are they up to? She doesn't seem to like him, but he is so into her. The ending of that date will be fun to watch.</em></p>
+
+          <p class="table-reveal">Lately, though, they've been quieter. It's hard to tell whether it's because they are sadder or because they are at peace.</p>
+
+          <p class="table-reveal">Last night we observed how the candle in the middle kept bending its flame. Next to it, a few tulips in a small vase looked out of place (in a good way), just like we were. My thoughts didn't talk much, they became pictures instead. One slipped into the candle flame and made it flicker. Another hid behind the tulips, as if it could pass for a petal. Then the waiter asked again if I were alone, and the tulips nodded first. I nodded after them, because it's easier to agree than to argue.</p>
+
+          <p class="table-reveal">I asked for the check, paid, and stood up. For a moment the chair behind me held my shape without me, warm as if I'd never moved. Outside, the street felt oddly quiet, as if I'd only brought my body and left the rest behind under the soft light, still nodding.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transition: table-for-one → end -->
+    <div class="section-spacer spacer-table-end"></div>
+
     <!-- Section 9: End -->
     <section class="section section-end" id="end">
       <div class="end-content">
@@ -901,5 +932,6 @@ they always wash away</p>
   </div>
 
   <script src="script.js"></script>
+  <script>document.body.classList.add('ready');</script>
 </body>
 </html>

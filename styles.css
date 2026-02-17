@@ -931,6 +931,7 @@ body {
   justify-content: center;
   padding: 10vh 2rem 12vh;
   position: relative;
+  overflow: hidden;
 }
 
 /* Candlelight flicker overlay */
@@ -1013,7 +1014,7 @@ body {
 .table-prose {
   font-family: var(--font-poem);
   font-size: clamp(1rem, 1.8vw, 1.15rem);
-  line-height: 2.2;
+  line-height: 1.8;
   color: #333;
   text-align: justify;
   hyphens: auto;
@@ -1021,11 +1022,15 @@ body {
 }
 
 .table-prose p {
-  margin: 0 0 1.6em 0;
+  margin: 0 0 1.2em 0;
 }
 
 .table-prose p:last-child {
   margin-bottom: 0;
+}
+
+.table-prose .table-continuation {
+  margin-top: -0.6em;
 }
 
 .table-prose em {

@@ -88,6 +88,47 @@ if (tableSection) {
   tableObserver.observe(tableSection);
 }
 
+// Observe ficciones elements
+document.querySelectorAll('.ficciones-reveal').forEach(el => {
+  poemObserver.observe(el);
+});
+
+// =====================
+// FICCIONES LANGUAGE TOGGLE
+// =====================
+const langToggle = document.querySelector('.lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn || btn.classList.contains('active')) return;
+
+    const lang = btn.dataset.lang;
+    const section = btn.closest('.section-ficciones');
+
+    // Update buttons
+    section.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+
+    // Swap visible poem body
+    section.querySelectorAll('.ficciones-lang').forEach(body => {
+      if (body.dataset.lang === lang) {
+        body.classList.remove('lang-hidden');
+        // Re-trigger reveal for stanzas
+        body.querySelectorAll('.ficciones-reveal').forEach(el => {
+          el.classList.remove('in-view');
+          poemObserver.observe(el);
+        });
+      } else {
+        body.classList.add('lang-hidden');
+      }
+    });
+  });
+}
+
 // =====================
 // SPECKS OF DUST EXPLOSION
 // =====================

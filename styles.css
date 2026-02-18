@@ -1069,6 +1069,112 @@ body {
 }
 
 /* =====================
+   SECTION: FICCIONES
+   ===================== */
+.section-ficciones {
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #fdfcfa 0%,
+    var(--bg) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 2rem 12vh;
+  position: relative;
+}
+
+.ficciones-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.ficciones-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  transition: color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.lang-btn:hover {
+  color: var(--fg);
+  letter-spacing: 0.22em;
+}
+
+.lang-btn.active {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.lang-hidden {
+  display: none;
+}
+
+/* Poem body */
+.ficciones-body {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.ficciones-stanza {
+  margin-bottom: 1.2rem;
+}
+
+.ficciones-stanza p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Scroll reveal */
+.ficciones-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.ficciones-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .section-ficciones {
+    padding: 8vh 1rem 10vh;
+  }
+  .ficciones-container {
+    padding-left: 0;
+  }
+  .ficciones-body {
+    font-size: clamp(0.82rem, 3.8vw, 1rem);
+  }
+}
+
+/* =====================
    END SECTION
    ===================== */
 .section-end {
@@ -1539,12 +1645,24 @@ body {
   );
 }
 
-/* table for one (warm off-white) → end */
-.spacer-table-end {
+/* table for one → ficciones */
+.spacer-table-ficciones {
   height: 30vh;
   background: linear-gradient(
     180deg,
     #fdfcfa 0%,
+    #f8f6f2 30%,
+    #f2f0ec 60%,
+    #fdfcfa 100%
+  );
+}
+
+/* ficciones → end */
+.spacer-ficciones-end {
+  height: 30vh;
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
     #f5f4f2 40%,
     #eeecea 100%
   );

@@ -1175,6 +1175,72 @@ body {
 }
 
 /* =====================
+   SECTION: WINTER DESSERT
+   ===================== */
+.section-winter-dessert {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 2rem 12vh;
+  position: relative;
+  color: var(--fg);
+}
+
+/* Container & typography */
+.winter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.winter-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5rem;
+  color: #9b4d5e;
+}
+
+.winter-body {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.9;
+  color: var(--fg);
+}
+
+.winter-stanza {
+  margin-bottom: 2rem;
+}
+
+.winter-stanza p {
+  margin: 0;
+  padding: 0;
+}
+
+.winter-closing {
+  margin-top: 3rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #9b4d5e;
+}
+
+@media (max-width: 768px) {
+  .section-winter-dessert {
+    padding: 8vh 1rem 10vh;
+  }
+  .winter-container {
+    padding-left: 0;
+  }
+  .winter-body {
+    font-size: clamp(0.82rem, 3.8vw, 1rem);
+  }
+}
+
+/* =====================
    END SECTION
    ===================== */
 .section-end {
@@ -1185,10 +1251,9 @@ body {
   padding-bottom: 6vh;
   background: linear-gradient(
     180deg,
-    #eeecea 0%,
-    #e8e6e4 30%,
-    #e0deda 60%,
-    #f0f0f0 100%
+    var(--bg) 0%,
+    #f5f4f2 40%,
+    #eeecea 100%
   );
 }
 
@@ -1657,15 +1722,16 @@ body {
   );
 }
 
-/* ficciones → end */
-.spacer-ficciones-end {
+/* ficciones → winter dessert */
+.spacer-ficciones-winter {
   height: 30vh;
-  background: linear-gradient(
-    180deg,
-    var(--bg) 0%,
-    #f5f4f2 40%,
-    #eeecea 100%
-  );
+  background: var(--bg);
+}
+
+/* winter dessert → end */
+.spacer-winter-end {
+  height: 30vh;
+  background: var(--bg);
 }
 
 /* =====================

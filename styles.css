@@ -542,6 +542,238 @@ body {
 }
 
 /* =====================
+   FROM NOW ON - POEM
+   ===================== */
+.section-from-now-on {
+  min-height: 100vh;
+  height: auto;
+  padding: 12vh 2rem 15vh;
+  position: relative;
+  overflow: hidden;
+  /* Horizon gradient: warm amber (past/left) → clear white (future/right) */
+  background: linear-gradient(
+    105deg,
+    #f5ede0 0%,
+    #faf5ec 15%,
+    #fdfcfa 40%,
+    #ffffff 70%,
+    #fafcff 100%
+  );
+}
+
+/* ---- Perspective lines (vanishing point) ---- */
+.fno-perspective {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fno-line {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.04);
+  transform-origin: right center;
+}
+
+/* Vanishing point target: right-center of the section */
+.fno-vanish-point {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  width: 2px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+}
+
+/* Lines converging toward the right */
+.fno-line-1 {
+  top: 10%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(-8deg);
+  transform-origin: right center;
+}
+
+.fno-line-2 {
+  top: 25%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(-4deg);
+  transform-origin: right center;
+}
+
+.fno-line-3 {
+  top: 38%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(-1.5deg);
+  transform-origin: right center;
+}
+
+.fno-line-4 {
+  top: 50%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(0deg);
+  transform-origin: right center;
+}
+
+.fno-line-5 {
+  top: 62%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(1.5deg);
+  transform-origin: right center;
+}
+
+.fno-line-6 {
+  top: 75%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(4deg);
+  transform-origin: right center;
+}
+
+.fno-line-7 {
+  top: 90%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  transform: rotate(8deg);
+  transform-origin: right center;
+}
+
+.fno-line-8 {
+  top: 50%;
+  left: 0;
+  right: 8%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.02);
+  transform: rotate(0deg);
+}
+
+/* ---- Poem content ---- */
+.fno-container {
+  max-width: 620px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.fno-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  margin-bottom: 2.8rem;
+  color: #8a7a60;
+}
+
+.fno-body {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1.12rem);
+  line-height: 2;
+  color: var(--fg);
+}
+
+.fno-stanza {
+  margin-bottom: 2.2rem;
+}
+
+.fno-stanza p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Progressive rightward shift — forward motion */
+.fno-shift-1 {
+  padding-left: 1.5rem;
+}
+.fno-shift-2 {
+  padding-left: 3rem;
+}
+.fno-shift-3 {
+  padding-left: 4.5rem;
+}
+
+/* Key line — "Everything is from now on." */
+.fno-key-line {
+  font-style: italic;
+  font-weight: 400;
+  color: #8a7a60;
+  letter-spacing: 0.04em;
+  margin-top: 0.3rem;
+}
+
+/* Parenthetical aside */
+.fno-aside {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95em;
+}
+
+
+/* ---- Scroll reveal ---- */
+.fno-reveal {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fno-reveal.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays */
+.fno-body .fno-reveal:nth-child(1) { transition-delay: 0s; }
+.fno-body .fno-reveal:nth-child(2) { transition-delay: 0.2s; }
+.fno-body .fno-reveal:nth-child(3) { transition-delay: 0.4s; }
+.fno-body .fno-reveal:nth-child(4) { transition-delay: 0.6s; }
+
+/* ---- Spacer: winter dessert → from-now-on ---- */
+.spacer-winter-fno {
+  height: 30vh;
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    #faf5ec 50%,
+    #f5ede0 100%
+  );
+}
+
+/* ---- Spacer: from-now-on → end ---- */
+.spacer-fno-end {
+  height: 30vh;
+  background: linear-gradient(
+    180deg,
+    #fdfcfa 0%,
+    var(--bg) 100%
+  );
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .section-from-now-on {
+    padding: 8vh 1.2rem 10vh;
+  }
+  .fno-shift-1 { padding-left: 0.8rem; }
+  .fno-shift-2 { padding-left: 1.5rem; }
+  .fno-shift-3 { padding-left: 2.2rem; }
+  .fno-body {
+    font-size: clamp(0.82rem, 3.8vw, 1rem);
+  }
+}
+
+/* =====================
    DESTIEMPO - POEM
    ===================== */
 .section-destiempo {
@@ -1728,11 +1960,7 @@ body {
   background: var(--bg);
 }
 
-/* winter dessert → end */
-.spacer-winter-end {
-  height: 30vh;
-  background: var(--bg);
-}
+/* (winter-end spacer replaced by winter-fno + fno-end) */
 
 /* =====================
    SECTION: ANECDOTE

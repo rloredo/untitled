@@ -93,6 +93,11 @@ document.querySelectorAll('.ficciones-reveal').forEach(el => {
   poemObserver.observe(el);
 });
 
+// Observe from-now-on elements
+document.querySelectorAll('.fno-title, .fno-reveal').forEach(el => {
+  poemObserver.observe(el);
+});
+
 // =====================
 // FICCIONES LANGUAGE TOGGLE
 // =====================

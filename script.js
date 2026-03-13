@@ -98,6 +98,11 @@ document.querySelectorAll('.fno-title, .fno-reveal').forEach(el => {
   poemObserver.observe(el);
 });
 
+// Observe ikea elements
+document.querySelectorAll('.ikea-reveal').forEach(el => {
+  poemObserver.observe(el);
+});
+
 // =====================
 // FICCIONES LANGUAGE TOGGLE
 // =====================

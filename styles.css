@@ -3064,6 +3064,256 @@ body.index-page {
   );
 }
 
+/* ===== BOARDING PASS ===== */
+.section-boarding {
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boarding-ticket {
+  max-width: 420px;
+  width: 90vw;
+  font-family: 'Roboto Condensed', sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Perforation lines */
+.boarding-perf-top,
+.boarding-perf-bottom {
+  height: 0;
+  border-top: 2px dashed rgba(0, 0, 0, 0.15);
+  margin: 0 -0.5rem;
+}
+
+/* Main body */
+.boarding-main {
+  background: #faf8f5;
+  padding: 1.8rem 1.5rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.boarding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.boarding-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.boarding-class {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.boarding-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.boarding-city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boarding-code {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1;
+}
+
+.boarding-cityname {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.35);
+  margin-top: 0.3rem;
+}
+
+.boarding-arrow {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.boarding-arrow svg {
+  width: clamp(60px, 20vw, 120px);
+}
+
+.boarding-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.boarding-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.boarding-field-label {
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.15rem;
+}
+
+.boarding-field-value {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.03em;
+}
+
+.boarding-divider {
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.2rem;
+}
+
+.boarding-poem {
+  text-align: left;
+}
+
+.boarding-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.4);
+  margin: 0 0 0.8rem 0;
+  letter-spacing: 0.03em;
+}
+
+.boarding-poem p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0.1em 0;
+}
+
+.boarding-poem p.boarding-paren {
+  color: rgba(0, 0, 0, 0.45);
+  font-style: italic;
+}
+
+/* Stub */
+.boarding-stub {
+  background: #faf8f5;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.boarding-stub-route {
+  display: flex;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.boarding-stub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.35);
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.boarding-barcode {
+  display: flex;
+  gap: 1.5px;
+  align-items: flex-end;
+  margin-left: auto;
+  height: 24px;
+}
+
+.boarding-barcode div {
+  width: 1.5px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.5px;
+}
+
+.boarding-barcode div:nth-child(odd)  { height: 100%; }
+.boarding-barcode div:nth-child(even) { height: 60%; }
+.boarding-barcode div:nth-child(3n)   { height: 80%; }
+.boarding-barcode div:nth-child(5n)   { height: 45%; }
+.boarding-barcode div:nth-child(7n)   { height: 90%; }
+
+.spacer-3am-boarding {
+  height: 30vh;
+  background: linear-gradient(
+    180deg,
+    #f0ebe3 0%,
+    var(--bg) 100%
+  );
+}
+
+.spacer-boarding-end {
+  height: 25vh;
+  background: var(--bg);
+}
+
+@media (max-width: 600px) {
+  .boarding-ticket {
+    width: 92vw;
+  }
+  .boarding-main {
+    padding: 1.4rem 1.2rem 1.2rem;
+  }
+  .boarding-details {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .boarding-stub {
+    padding: 0.8rem 1.2rem;
+    flex-wrap: wrap;
+  }
+  .boarding-barcode {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 600px) {
   .threeam-container {
     padding: 3rem 1.5rem;

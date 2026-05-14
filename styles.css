@@ -3294,6 +3294,120 @@ body.index-page {
   background: var(--bg);
 }
 
+/* =====================
+   PERCEPTION
+   ===================== */
+.section-perception {
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.perception-container {
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+}
+
+.perception-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 0.6rem 0;
+  letter-spacing: 0.02em;
+}
+
+/* Ruler */
+.perception-ruler {
+  margin-bottom: 2.5rem;
+}
+
+.ruler-track {
+  display: flex;
+  align-items: stretch;
+  height: 28px;
+  width: 100%;
+  position: relative;
+}
+
+.ruler-segment {
+  position: relative;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.35);
+}
+
+.ruler-km {
+  flex: 3;
+  border-left: 1.5px solid rgba(0, 0, 0, 0.35);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.35);
+  /* minor ticks via repeating gradient */
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 0.5px,
+    transparent 0.5px,
+    transparent 10%
+  );
+}
+
+.ruler-years {
+  flex: 1;
+  border-right: 1.5px solid rgba(0, 0, 0, 0.35);
+  /* fewer ticks for years */
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 0.5px,
+    transparent 0.5px,
+    transparent 33.33%
+  );
+}
+
+.ruler-ticks {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  padding: 0 4px 3px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.ruler-label-mid {
+  text-transform: uppercase;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* Poem text */
+.perception-poem p {
+  font-family: var(--font-poem);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0.05em 0;
+}
+
+/* Spacers */
+.spacer-boarding-perception {
+  height: 25vh;
+  background: var(--bg);
+}
+
+.spacer-perception-end {
+  height: 25vh;
+  background: var(--bg);
+}
+
 @media (max-width: 600px) {
   .boarding-ticket {
     width: 92vw;

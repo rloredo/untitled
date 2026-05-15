@@ -3403,7 +3403,45 @@ body.index-page {
   background: var(--bg);
 }
 
-.spacer-perception-end {
+/* exhale */
+.section-exhale {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.exhale-container {
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+}
+
+.exhale-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.exhale-poem p {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0.05em 0;
+}
+
+.spacer-perception-exhale {
+  height: 25vh;
+  background: var(--bg);
+}
+
+.spacer-exhale-end {
   height: 25vh;
   background: var(--bg);
 }

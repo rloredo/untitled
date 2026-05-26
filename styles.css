@@ -3580,6 +3580,65 @@ body.index-page {
   background: var(--bg);
 }
 
+.spacer-sharks-pillows {
+  height: 25vh;
+  background: var(--bg);
+}
+
+/* the pillows still hint at you */
+.section-pillows {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.pillows-bg {
+  position: absolute;
+  inset: 0;
+  background: url('imgs/pillow.svg') repeat;
+  background-size: 420px auto;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.pillows-container {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  text-align: left;
+}
+
+.pillows-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.pillows-poem p {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0.05em 0;
+}
+
+.pillows-break {
+  margin-bottom: 1.5em !important;
+}
+
+.spacer-pillows-end {
+  height: 25vh;
+  background: var(--bg);
+}
+
 .spacer-sharks-end {
   height: 25vh;
   background: var(--bg);

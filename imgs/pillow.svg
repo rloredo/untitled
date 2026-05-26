@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <filter id="paperTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" seed="8"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.12"/>
+      </feComponentTransfer>
+    </filter>
+
+    <style>
+      .ink {
+        stroke: #222;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .thin {
+        stroke-width: 1.2;
+      }
+      .dash {
+        stroke-dasharray: 8 16;
+      }
+      .fillInk {
+        fill: #222;
+      }
+    </style>
+
+    <g id="fernLeaf">
+      <path class="ink" d="M0 0 C60 -70 130 -180 180 -310 C190 -335 195 -350 195 -355"/>
+      <g class="ink thin">
+        <path d="M30 -40 C65 -45 105 -48 138 -50"/>
+        <path d="M55 -75 C100 -82 145 -90 180 -95"/>
+        <path d="M80 -128 C125 -145 168 -162 205 -175"/>
+        <path d="M105 -168 C148 -192 185 -215 218 -232"/>
+
+        <path d="M35 -48 C5 -68 -25 -88 -52 -105"/>
+        <path d="M58 -85 C25 -115 -8 -142 -38 -165"/>
+        <path d="M85 -145 C55 -185 28 -225 5 -260"/>
+      </g>
+    </g>
+
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="#e8e6df"/>
+  <rect width="1080" height="1920" filter="url(#paperTexture)" opacity="0.35"/>
+
+  <!-- Soft fabric-like folds -->
+  <path d="M110 0 C70 340 150 560 95 900 C45 1190 130 1480 80 1920"
+        stroke="#c8c5bc" stroke-width="6" opacity="0.18" fill="none"/>
+  <path d="M710 0 C760 340 670 650 730 940 C790 1245 720 1580 775 1920"
+        stroke="#bebbb3" stroke-width="6" opacity="0.15" fill="none"/>
+
+  <!-- Main branch lines -->
+  <path class="ink dash" d="M-40 635 C175 555 345 615 520 505 C675 405 780 315 1120 280"/>
+  <path class="ink dash" d="M120 1920 C230 1590 305 1295 455 1025 C560 835 660 690 900 595"/>
+  <path class="ink dash" d="M-20 1040 C180 960 315 1025 500 925 C690 820 805 765 1110 780"/>
+  <path class="ink dash" d="M910 -40 C860 210 820 370 720 565 C610 780 560 905 565 1125"/>
+
+  <!-- Large top-left flower made of marks -->
+  <g transform="translate(210 205)">
+    <circle cx="0" cy="0" r="4" class="fillInk"/>
+    <g class="ink thin">
+      <path d="M0 0 C-70 -80 -130 -120 -210 -150"/>
+      <path d="M0 0 C-65 -45 -135 -65 -220 -65"/>
+      <path d="M0 0 C-80 -5 -150 20 -230 70"/>
+      <path d="M0 0 C-50 45 -95 105 -140 190"/>
+      <path d="M0 0 C10 80 15 150 0 240"/>
+      <path d="M0 0 C60 40 105 90 145 165"/>
+      <path d="M0 0 C85 5 160 35 235 90"/>
+      <path d="M0 0 C70 -35 140 -55 225 -45"/>
+      <path d="M0 0 C40 -80 80 -135 145 -200"/>
+    </g>
+  </g>
+
+  <!-- Botanical elements -->
+  <use href="#fernLeaf" transform="translate(360 650) rotate(-112) scale(1.25)"/>
+  <use href="#fernLeaf" transform="translate(325 1055) rotate(-18) scale(1.45)"/>
+  <use href="#fernLeaf" transform="translate(575 1180) rotate(32) scale(1.25)"/>
+  <use href="#fernLeaf" transform="translate(730 450) rotate(148) scale(1.05)"/>
+  <use href="#fernLeaf" transform="translate(95 1300) rotate(-42) scale(1.15)"/>
+
+  <!-- Sparse hatched leaf cluster bottom -->
+  <g transform="translate(510 1470) rotate(-12)">
+    <path class="ink" d="M0 0 C60 -90 145 -185 265 -280 C280 -292 290 -298 295 -300"/>
+    <g class="ink thin">
+      <path d="M40 -55 C75 -62 110 -70 140 -76"/>
+      <path d="M85 -115 C130 -125 175 -135 218 -142"/>
+      <path d="M140 -185 C185 -200 235 -218 275 -232"/>
+
+      <path d="M35 -45 C15 -62 -5 -78 -25 -95"/>
+      <path d="M75 -100 C48 -130 25 -158 -5 -182"/>
+      <path d="M125 -165 C95 -200 68 -238 45 -268"/>
+    </g>
+  </g>
+
+  <!-- Small floating dashed stems -->
+  <g class="ink thin dash">
+    <path d="M945 315 C1010 345 1050 400 1085 470"/>
+    <path d="M790 1700 C855 1650 930 1615 1035 1610"/>
+  </g>
+</svg>

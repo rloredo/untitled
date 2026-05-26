@@ -3509,10 +3509,12 @@ body.index-page {
 /* 450 million years (sharks) */
 .section-sharks {
   position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
   overflow: hidden;
 }
 
@@ -3534,12 +3536,13 @@ body.index-page {
 
 .sharks-title {
   font-family: var(--font-poem);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 300;
-  font-style: italic;
-  color: var(--fg);
-  margin: 0 0 2rem 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .sharks-prose p {
@@ -3573,6 +3576,212 @@ body.index-page {
 
 .coffee-word {
   color: #4a2c17;
+}
+
+/* Sharks paginated book layout */
+.sharks-book {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem 2rem;
+  position: relative;
+}
+
+.sharks-page-container {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sharks-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow-y: auto;
+  padding: 1rem 2rem 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.sharks-page::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sharks-page::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
+
+.sharks-page.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  position: relative;
+}
+
+.sharks-chapter-number {
+  font-family: var(--font-poem);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sharks-text {
+  font-family: var(--font-poem);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 2;
+  color: #222;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.sharks-text p {
+  margin: 0 0 1em 0;
+}
+
+.sharks-text p.dialogue {
+  margin: 0;
+}
+
+.sharks-text p.dialogue + p:not(.dialogue) {
+  margin-top: 1em;
+}
+
+.sharks-text p:not(.dialogue) + p.dialogue {
+  margin-top: 1em;
+}
+
+.sharks-text p:first-child {
+  text-indent: 0;
+}
+
+.sharks-text blockquote {
+  border-left: 2px solid rgba(0, 0, 0, 0.15);
+  padding-left: 1.5rem;
+  margin: 1.5em 0;
+}
+
+.sharks-text blockquote p {
+  margin: 0 0 0.8em 0;
+}
+
+.sharks-text a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s ease;
+}
+
+.sharks-text a:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Sharks navigation */
+.sharks-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sharks-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.sharks-btn:hover {
+  color: var(--fg);
+  letter-spacing: 0.2em;
+}
+
+.sharks-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.sharks-index {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  flex-shrink: 0;
+  max-width: 700px;
+}
+
+.sharks-index-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-poem);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #ccc;
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.sharks-index-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: var(--fg);
+  transition: width 0.3s ease;
+}
+
+.sharks-index-btn:hover {
+  color: #666;
+}
+
+.sharks-index-btn.active {
+  color: var(--fg);
+}
+
+.sharks-index-btn.active::after {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .sharks-book {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .sharks-page {
+    padding: 1rem 1rem 2rem;
+  }
 }
 
 .spacer-firstdate-sharks {

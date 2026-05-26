@@ -870,3 +870,107 @@ if (basqueSection) {
     }
   }, { passive: false });
 }
+
+// =====================
+// SHARKS 450 MILLION YEARS - PAGE NAVIGATION
+// =====================
+const sharksSection = document.querySelector('.section-sharks');
+
+// Auto-detect dialogue paragraphs in sharks section
+document.querySelectorAll('.sharks-text p').forEach(p => {
+  if (p.textContent.trimStart().startsWith('"') || p.textContent.trimStart().startsWith('\u201C')) {
+    p.classList.add('dialogue');
+  }
+});
+
+if (sharksSection) {
+  const sharksPages = sharksSection.querySelectorAll('.sharks-page');
+  const sharksPrevBtn = sharksSection.querySelector('.sharks-prev');
+  const sharksNextBtn = sharksSection.querySelector('.sharks-next');
+  const sharksIndexBtns = sharksSection.querySelectorAll('.sharks-index-btn');
+  let sharksCurrentPage = 0;
+  let sharksIsAnimating = false;
+
+  function goToSharksPage(index) {
+    if (sharksIsAnimating || index === sharksCurrentPage || index < 0 || index >= sharksPages.length) return;
+    sharksIsAnimating = true;
+
+    const direction = index > sharksCurrentPage ? 1 : -1;
+    const outgoing = sharksPages[sharksCurrentPage];
+    const incoming = sharksPages[index];
+
+    // Exit current page
+    outgoing.classList.remove('active');
+    outgoing.style.transform = `translateX(${-40 * direction}px)`;
+    outgoing.style.opacity = '0';
+
+    // Prepare incoming page
+    incoming.style.transition = 'none';
+    incoming.style.transform = `translateX(${40 * direction}px)`;
+    incoming.style.opacity = '0';
+
+    // Force reflow
+    incoming.offsetHeight;
+
+    // Animate incoming
+    incoming.style.transition = '';
+    incoming.classList.add('active');
+    incoming.style.transform = '';
+    incoming.style.opacity = '';
+    incoming.scrollTop = 0;
+
+    // Update index buttons
+    sharksIndexBtns.forEach(btn => btn.classList.remove('active'));
+    sharksIndexBtns[index].classList.add('active');
+
+    // Update prev/next state
+    sharksCurrentPage = index;
+    sharksPrevBtn.disabled = sharksCurrentPage === 0;
+    sharksNextBtn.disabled = sharksCurrentPage === sharksPages.length - 1;
+
+    setTimeout(() => { sharksIsAnimating = false; }, 500);
+  }
+
+  sharksPrevBtn.addEventListener('click', () => goToSharksPage(sharksCurrentPage - 1));
+  sharksNextBtn.addEventListener('click', () => goToSharksPage(sharksCurrentPage + 1));
+
+  sharksIndexBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = parseInt(btn.getAttribute('data-target')) - 1;
+      goToSharksPage(target);
+    });
+  });
+
+  // Initial state
+  sharksPrevBtn.disabled = true;
+
+  // Scroll past top/bottom to change chapter
+  let sharksScrollAccumulator = 0;
+  const sharksScrollThreshold = 150;
+  let sharksScrollTimeout = null;
+
+  const sharksPageContainer = sharksSection.querySelector('.sharks-page-container');
+  sharksPageContainer.addEventListener('wheel', (e) => {
+    const activePage = sharksPages[sharksCurrentPage];
+    const atTop = activePage.scrollTop <= 0;
+    const atBottom = activePage.scrollTop + activePage.clientHeight >= activePage.scrollHeight - 1;
+
+    if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) {
+      e.preventDefault();
+      sharksScrollAccumulator += e.deltaY;
+
+      if (sharksScrollAccumulator > sharksScrollThreshold && atBottom) {
+        sharksScrollAccumulator = 0;
+        goToSharksPage(sharksCurrentPage + 1);
+      } else if (sharksScrollAccumulator < -sharksScrollThreshold && atTop) {
+        sharksScrollAccumulator = 0;
+        goToSharksPage(sharksCurrentPage - 1);
+      }
+
+      clearTimeout(sharksScrollTimeout);
+      sharksScrollTimeout = setTimeout(() => { sharksScrollAccumulator = 0; }, 500);
+    } else {
+      sharksScrollAccumulator = 0;
+    }
+  }, { passive: false });
+}

@@ -3844,6 +3844,60 @@ body.index-page {
   background: var(--bg);
 }
 
+/* Section: I don't mind getting tired with you */
+.section-tired {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+}
+
+.tired-container {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  text-align: left;
+}
+
+.tired-title {
+  font-family: var(--font-poem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.tired-poem p {
+  font-family: var(--font-poem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0.05em 0;
+}
+
+.tired-poem .tired-break {
+  height: 0.8em;
+}
+
+.tired-poem .tired-closing {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.spacer-pillows-tired {
+  height: 25vh;
+  background: var(--bg);
+}
+
+.spacer-tired-end {
+  height: 25vh;
+  background: var(--bg);
+}
+
 .spacer-sharks-end {
   height: 25vh;
   background: var(--bg);

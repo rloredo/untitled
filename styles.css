@@ -3898,6 +3898,62 @@ body.index-page {
   background: var(--bg);
 }
 
+/* =====================
+   ROSARIO CENTRAL
+   ===================== */
+.section-rosario {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 4rem 2rem;
+}
+
+.rosario-container {
+  max-width: 640px;
+  width: 100%;
+}
+
+.rosario-title {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: var(--fg);
+}
+
+.rosario-poem {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--fg);
+}
+
+.rosario-poem p {
+  margin: 0;
+  padding: 0;
+}
+
+.rosario-poem .rosario-break {
+  height: 0.8em;
+}
+
+.rosario-poem .rosario-parenthetical {
+  color: var(--muted);
+}
+
+.spacer-tired-rosario {
+  height: 25vh;
+  background: var(--bg);
+}
+
+.spacer-rosario-end {
+  height: 25vh;
+  background: var(--bg);
+}
+
 .spacer-sharks-end {
   height: 25vh;
   background: var(--bg);
